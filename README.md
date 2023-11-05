@@ -1,2 +1,6 @@
 # Number_Guesser_Game
-A game where you think of a number and the program has to guess what it is within a certain number of tries.
+A game where the user thinks of a number and the program has 
+to guess what the number is within a certain number of tries.
+
+### Versions
+* Python 3.9.18
