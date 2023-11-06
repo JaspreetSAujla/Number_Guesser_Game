@@ -78,12 +78,12 @@ class NumberGuesser:
     
 
 
-    def determine_new_guess(self, current_lower_limit: int, current_upper_limit: int, original_upper_limit: int) -> int:
-        midpoint: int = (current_upper_limit - current_lower_limit)//2
-        if midpoint == 0 and current_upper_limit == original_upper_limit:
-            return current_lower_limit + 1
+    def determine_new_guess(self, lower_limit: int, upper_limit: int, original_upper_limit: int) -> int:
+        midpoint: int = (upper_limit - lower_limit)//2
+        if midpoint == 0 and upper_limit == original_upper_limit:
+            return lower_limit + 1
         else:
-            return current_lower_limit + midpoint
+            return lower_limit + midpoint
     
 
 

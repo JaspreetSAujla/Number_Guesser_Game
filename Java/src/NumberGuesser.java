@@ -77,11 +77,19 @@ public class NumberGuesser {
                         if (higherOrLower.equals("h")) {
                             validHigherOrLower = true;
                             currentLowerLimit = currentGuess;
-                            currentGuess = determineNewGuess(currentLowerLimit, currentUpperLimit);
+                            currentGuess = determineNewGuess(currentLowerLimit, currentUpperLimit, this.upperLimit);
+                            if (currentGuess > this.upperLimit) {
+                                System.out.println("You have thought of a number higher than the range, the game will end now...");
+                                currentNumberOfGuesses = this.numberOfGuesses;
+                            }
                         } else if (higherOrLower.equals("l")) {
                             validHigherOrLower = true;
                             currentUpperLimit = currentGuess;
-                            currentGuess = determineNewGuess(currentLowerLimit, currentUpperLimit);
+                            currentGuess = determineNewGuess(currentLowerLimit, currentUpperLimit, this.upperLimit);
+                            if (currentGuess < this.lowerLimit) {
+                                System.out.println("You have thought of a number less than the range, the game will end now...");
+                                currentNumberOfGuesses = this.numberOfGuesses;
+                            }
                         } else {
                             System.out.println("Invalid response, try again.");
                         }
@@ -94,9 +102,13 @@ public class NumberGuesser {
         }
     }
 
-    private int determineNewGuess(int lowerLimit, int upperLimit) {
-        int midpoint = (upperLimit - lowerLimit)/2;
-        return lowerLimit + midpoint;
+    private int determineNewGuess(int lowerLimit, int upperLimit, int originalUpperLimit) {
+        int midpoint = (upperLimit - lowerLimit) / 2;
+        if (midpoint == 0 && upperLimit == originalUpperLimit) {
+            return lowerLimit + 1;
+        } else {
+            return lowerLimit + midpoint;
+        }
     }
 
     private boolean playAgain() {

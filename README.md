@@ -4,3 +4,4 @@ to guess what the number is within a certain number of tries.
 
 ### Versions
 * Python 3.9.18
+* Java 21.0.1
